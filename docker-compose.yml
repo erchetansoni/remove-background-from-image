@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - U2NET_HOME=/root/.u2net
+    volumes:
+      - ./backend/app:/app/app          # live code reload
+      - model-cache:/root/.u2net        # persist the rembg model across rebuilds
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - INTERNAL_API_URL=http://backend:8000   # server-side proxy target
+      - WATCHPACK_POLLING=true                  # reliable hot reload in Docker
+    volumes:
+      - ./frontend:/app                 # live code reload
+      - /app/node_modules               # keep container's installed deps
+    depends_on:
+      - backend
+
+volumes:
+  model-cache:
