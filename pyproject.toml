@@ -1,0 +1,12 @@
+[project]
+name = "remove-background-from-image"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numba>=0.60",
+    "onnxruntime>=1.27.0",
+    "pillow>=12.3.0",
+    "rembg>=2.0.77",
+]
