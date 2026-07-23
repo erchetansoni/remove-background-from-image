@@ -34,7 +34,7 @@ That's it — you're ready to go.
 ### Remove the background from one image
 
 ```bash
-uv run remove_bg.py input.jpg
+uv run main.py input.jpg
 ```
 
 This creates `input_nobg.png` next to the original.
@@ -42,13 +42,13 @@ This creates `input_nobg.png` next to the original.
 ### Choose where to save the result
 
 ```bash
-uv run remove_bg.py input.jpg -o result.png
+uv run main.py input.jpg -o result.png
 ```
 
 ### Cleaner edges (hair, fur, fine detail)
 
 ```bash
-uv run remove_bg.py input.jpg --matting
+uv run main.py input.jpg --matting
 ```
 
 Slower, but noticeably smoother around tricky edges.
@@ -56,7 +56,7 @@ Slower, but noticeably smoother around tricky edges.
 ### Process a whole folder at once
 
 ```bash
-uv run remove_bg.py ./photos -o ./cutouts
+uv run main.py ./photos -o ./cutouts
 ```
 
 Every image in `./photos` gets a `_nobg.png` version in `./cutouts`.
@@ -64,7 +64,7 @@ Every image in `./photos` gets a `_nobg.png` version in `./cutouts`.
 ### Pick a different AI model
 
 ```bash
-uv run remove_bg.py input.jpg --model birefnet-general --matting
+uv run main.py input.jpg --model birefnet-general --matting
 ```
 
 | Model                | Best for                                   |
